@@ -31,6 +31,30 @@ mv /home/ryan/Downloads/hadoop-2.6.0.tar.gz /usr/local
 mkdir hadoop
 mv hadoop-2.6.0/* to hadoop/
 
-#exit the superuser and change to hadoop2 user
+#exit the superuser
 exit
-su hadoop2
+
+
+#show hidden files, looking for .bashrc file
+ls -la ~/ | more
+
+#Add the following to the .bashrc file
+#HADOOP VARIABLES START
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export HADOOP_INSTALL=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_INSTALL/bin
+export PATH=$PATH:$HADOOP_INSTALL/sbin
+export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_HOME=$HADOOP_INSTALL
+export HADOOP_HDFS_HOME=$HADOOP_INSTALL
+export YARN_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib"
+#HADOOP VARIABLES END
+
+
+#tell hadoop where the hadoop home is
+# first we open the file with 
+$ vim /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+# and change the following variable.
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
