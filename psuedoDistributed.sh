@@ -20,3 +20,53 @@ source ~/.bashrc
 
 #navigate to the hadoop environment variables
 cd $HADOOP_HOME/etc/hadoop
+
+#add the following to the core-site.xml
+#may have to log in as the superuser if the file is in read-only
+vim core-site.xml
+
+
+<configuration>
+
+   <property>
+      <name>fs.default.name </name>
+      <value> hdfs://localhost:9000 </value> 
+   </property>
+ 
+</configuration>
+
+
+#adding to the hdfs-site.xml
+vim hdfs-site.xml
+
+<configuration>
+
+   <property>
+      <name>dfs.replication</name>
+      <value>1</value>
+   </property>
+    
+   <property>
+      <name>dfs.name.dir</name>
+      <value>file:///home/hadoop2/hadoopinfra/hdfs/namenode </value>
+   </property>
+    
+   <property>
+      <name>dfs.data.dir</name> 
+      <value>file:///home/hadoop2/hadoopinfra/hdfs/datanode </value> 
+   </property>
+       
+</configuration>
+
+
+
+
+#configure YARN into Hadoop
+<configuration>
+ 
+   <property>
+      <name>yarn.nodemanager.aux-services</name>
+      <value>mapreduce_shuffle</value> 
+   </property>
+  
+</configuration>
