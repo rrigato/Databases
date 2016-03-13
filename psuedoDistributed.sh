@@ -92,8 +92,23 @@ vim mapred-site.xml
 #formatting the namenode
 #it should have INFO util.ExitUtil: Exiting with status 0
 #if it is set up sucessfully 
+#only do this once or else you will delete all your data
 cd ~ 
 hdfs namenode -format 
 
 #make sure hadoop2 user has proper permissions
 sudo chown -R hadoop2 /usr/local/hadoop/
+
+#Starts the hadoop file system
+start-dfs.sh 
+
+#starts the YARN script which runs the YARN daemons
+start-yarn.sh
+
+#the overview of the hadoop cluster can be viewed in a browser
+#the default port for hadoop is 50070
+http://localhost:50070/
+
+#access all applications of a cluster
+#the default port is 8088
+http://localhost:8088/
