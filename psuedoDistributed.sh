@@ -29,8 +29,8 @@ vim core-site.xml
 <configuration>
 
    <property>
-      <name>fs.default.name </name>
-      <value> hdfs://localhost:9000 </value> 
+    <name>fs.default.name</name>
+      <value>hdfs://localhost:9000</value> 
    </property>
  
 </configuration>
@@ -94,3 +94,6 @@ vim mapred-site.xml
 #if it is set up sucessfully 
 cd ~ 
 hdfs namenode -format 
+
+#make sure hadoop2 user has proper permissions
+sudo chown -R hadoop2 /usr/local/hadoop/
