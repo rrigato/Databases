@@ -70,3 +70,27 @@ vim hdfs-site.xml
    </property>
   
 </configuration>
+
+
+#copy the template provided from installation
+cp mapred-site.xml.template mapred-site.xml 
+
+#Configure the new file
+vim mapred-site.xml
+
+
+<configuration>
+ 
+   <property> 
+      <name>mapreduce.framework.name</name>
+      <value>yarn</value>
+   </property>
+   
+</configuration>
+
+
+#formatting the namenode
+#it should have INFO util.ExitUtil: Exiting with status 0
+#if it is set up sucessfully 
+cd ~ 
+hdfs namenode -format 
