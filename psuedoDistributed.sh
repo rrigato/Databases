@@ -37,23 +37,24 @@ vim core-site.xml
 
 
 #adding to the hdfs-site.xml
+#tells where the data and namenode directories are
 vim hdfs-site.xml
 
 <configuration>
 
    <property>
-      <name>dfs.replication</name>
-      <value>1</value>
-   </property>
-    
-   <property>
       <name>dfs.name.dir</name>
       <value>file:///home/hadoop2/hadoopinfra/hdfs/namenode </value>
    </property>
-    
+
    <property>
-      <name>dfs.data.dir</name> 
-      <value>file:///home/hadoop2/hadoopinfra/hdfs/datanode </value> 
+      <name>dfs.data.dir</name>
+      <value>file:///home/hadoop2/hadoopinfra/hdfs/datanode </value>
+   </property>
+
+   <property>
+      <name>dfs.replication</name>
+      <value>1</value>
    </property>
        
 </configuration>
@@ -112,3 +113,5 @@ http://localhost:50070/
 #access all applications of a cluster
 #the default port is 8088
 http://localhost:8088/
+
+
